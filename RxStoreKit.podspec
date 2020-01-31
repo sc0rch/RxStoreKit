@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RxStoreKit"
-  s.version      = "5.0.0"
+  s.version      = "5.0.1"
   s.summary      = "StoreKit library for RxSwift"
   s.description  = "RxStoreKit is lightweight and easy to use Rx support for StoreKit."
   s.homepage     = "https://github.com/sc0rch/RxStoreKit"
