@@ -8,26 +8,22 @@
 
 import StoreKit
 #if !RX_NO_MODULE
-    import RxSwift
-    import RxCocoa
+  import RxCocoa
+  import RxSwift
 #endif
 
 extension SKProductsRequest {
-    
-    public func createRxDelegateProxy() -> SKProductsRequestDelegateProxy {
-        return SKProductsRequestDelegateProxy(parentObject: self)
-    }
-    
+  public func createRxDelegateProxy() -> SKProductsRequestDelegateProxy {
+    return SKProductsRequestDelegateProxy(parentObject: self)
+  }
 }
 
 extension Reactive where Base: SKProductsRequest {
-    
-    public var delegate: DelegateProxy<SKProductsRequest, SKProductsRequestDelegate> {
-        return SKProductsRequestDelegateProxy.proxy(for: base)
-    }
-    
-    public var productsRequest: Observable<SKProductsResponse> {
-        return SKProductsRequestDelegateProxy.proxy(for: base).responseSubject.asObservable()
-    }
-    
+  public var delegate: DelegateProxy<SKProductsRequest, SKProductsRequestDelegate> {
+    return SKProductsRequestDelegateProxy.proxy(for: base)
+  }
+
+  public var productsRequest: Observable<SKProductsResponse> {
+    return SKProductsRequestDelegateProxy.proxy(for: base).responseSubject.asObservable()
+  }
 }
