@@ -57,6 +57,13 @@ public class RxSKPaymentTransactionObserver {
         updatedDownloadSubject.onNext(download)
       }
     }
+
+    #if os(iOS) && !targetEnvironment(macCatalyst)
+      public func paymentQueue(_: SKPaymentQueue, shouldAddStorePayment _: SKPayment, for _: SKProduct) -> Bool {
+        // TODO: Find the way to provide value using callbacks or something else. Switch back to `false` by default
+        return true
+      }
+    #endif
   }
 
   public var rx_updatedTransaction: Observable<SKPaymentTransaction> {
